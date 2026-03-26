@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="form-box">
+<h2>Criminal Record</h2>
+
+<form method="POST" enctype="multipart/form-data">
+
+    <input name="name" placeholder="Name">
+    <input name="age" placeholder="Age">
+
+    <select name="gender">
+        <option>Male</option>
+        <option>Female</option>
+    </select>
+
+    <input name="address" placeholder="Address">
+    <textarea name="history" placeholder="Crime History"></textarea>
+
+    <input type="file" name="photo">
+
+    <button>Save</button>
+
+</form>
+<hr>
+<h2>Criminal Records</h2>
+
+<table>
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Gender</th>
+    <th>Photo</th>
+    <th>Action</th>
+</tr>
+
+{% for row in data %}
+<tr>
+    <td>{{ row[0] }}</td>
+    <td>{{ row[1] }}</td>
+    <td>{{ row[2] }}</td>
+    <td>{{ row[3] }}</td>
+    <td>
+        <img src="/static/uploads/{{ row[6] }}" width="80">
+    </td>
+
+    <!-- 👇 ADD THIS -->
+    <td>
+        <a href="/edit_criminal/{{ row[0] }}">✏️ Edit</a> |
+        <a href="/delete_criminal/{{ row[0] }}">🗑 Delete</a>
+    </td>
+
+</tr>
+{% endfor %}
+
+</table>
+</div>
+
+{% endblock %}

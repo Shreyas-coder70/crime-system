@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="form-box">
+<h2>Victim & Witness</h2>
+
+<form method="POST">
+
+    <input name="name" placeholder="Name">
+    <input name="contact" placeholder="Contact">
+    <input name="address" placeholder="Address">
+    <input name="case_id" placeholder="Linked Case ID">
+
+    <button>Save</button>
+</form>
+<h2>Victim Records</h2>
+
+<table>
+<tr>
+    <th>Name</th>
+    <th>Contact</th>
+    <th>Address</th>
+</tr>
+
+{% for row in data %}
+<tr>
+    <td>{{ row[1] }}</td>
+    <td>{{ row[2] }}</td>
+    <td>{{ row[3] }}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+{% endblock %}

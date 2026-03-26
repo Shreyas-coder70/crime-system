@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="form-box">
+<h2>FIR Registration</h2>
+
+<form action="/add_fir" method="POST">
+    <input name="fir_id" placeholder="FIR ID">
+    <input type="date" name="date">
+
+    <select name="crime_type">
+        <option>Theft</option>
+        <option>Assault</option>
+        <option>Fraud</option>
+    </select>
+
+    <input name="location" placeholder="Location">
+    <textarea name="description" placeholder="Description"></textarea>
+
+    <button>Register</button>
+</form>
+<h2>FIR Records</h2>
+
+<table>
+<tr>
+    <th>ID</th>
+    <th>Crime Type</th>
+    <th>Location</th>
+    <th>Description</th>
+</tr>
+
+{% for row in data %}
+<tr>
+    <td>{{ row[0] }}</td>
+    <td>{{ row[1] }}</td>
+    <td>{{ row[2] }}</td>
+    <td>{{ row[3] }}</td>
+</tr>
+{% endfor %}
+
+</table>
+</div>
+
+{% endblock %}

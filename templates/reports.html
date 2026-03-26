@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="form-box">
+<h2>Reports</h2>
+
+<form method="POST">
+
+    <label>
+        <input type="radio" name="type" value="criminal"> Criminal Report
+    </label>
+
+    <label>
+        <input type="radio" name="type" value="case"> Case Report
+    </label>
+
+    <label>
+        <input type="radio" name="type" value="fir"> FIR Report
+    </label>
+
+    <br><br>
+
+    <input type="date" name="from_date">
+    <input type="date" name="to_date">
+
+    <button>Generate Report</button>
+</form>
+
+<br>
+
+{% if data %}
+<table>
+<tr>
+    {% for col in headers %}
+        <th>{{ col }}</th>
+    {% endfor %}
+</tr>
+
+{% for row in data %}
+<tr>
+    {% for item in row %}
+        <td>{{ item }}</td>
+    {% endfor %}
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="form-box">
+<h2>Case Management</h2>
+
+<form method="POST">
+
+    <input name="case_id" placeholder="Case ID">
+    <input name="fir_id" placeholder="FIR ID">
+    <input name="officer" placeholder="Assigned Officer">
+<label>Status:</label>
+
+<div class="radio-group">
+    <label><input type="radio" name="status" value="Open"> Open</label>
+    <label><input type="radio" name="status" value="Under Investigation"> Under Investigation</label>
+    <label><input type="radio" name="status" value="Closed"> Closed</label>
+</div>
+    <textarea name="notes" placeholder="Notes"></textarea>
+
+    <button>Update Status</button>
+</form>
+<h2>Case Records</h2>
+
+<table>
+<tr>
+    <th>ID</th>
+    <th>Case ID</th>
+    <th>FIR ID</th>
+    <th>Status</th>
+</tr>
+
+{% for row in data %}
+<tr>
+    <td>{{ row[0] }}</td>
+    <td>{{ row[1] }}</td>
+    <td>{{ row[2] }}</td>
+    <td>{{ row[4] }}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Edit Criminal</h2>
+
+<form method="POST">
+
+<input name="name" value="{{ data[1] }}">
+<input name="age" value="{{ data[2] }}">
+
+<select name="gender">
+    <option {% if data[3]=='Male' %}selected{% endif %}>Male</option>
+    <option {% if data[3]=='Female' %}selected{% endif %}>Female</option>
+</select>
+
+<input name="address" value="{{ data[4] }}">
+<textarea name="history">{{ data[5] }}</textarea>
+
+<button>Update</button>
+
+</form>
+
+{% endblock %}
